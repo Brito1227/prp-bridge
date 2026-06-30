@@ -37,6 +37,14 @@ local HasNamedPtfxAssetLoaded = HasNamedPtfxAssetLoaded
 local RequestWeaponAsset = RequestWeaponAsset
 local HasWeaponAssetLoaded = HasWeaponAssetLoaded
 local joaat = joaat
+local IsModelValid = IsModelValid
+local IsModelAPed = IsModelAPed
+local IsModelAVehicle = IsModelAVehicle
+local GetModelDimensions = GetModelDimensions
+local SetModelAsNoLongerNeeded = SetModelAsNoLongerNeeded
+
+local maxAttachModelSize = tonumber(GetConvar('prp:attachObjectMaxSize', '5.0')) or 5.0
+local maxAttachObjects = GetConvarInt('prp:attachObjectLimit', 16)
 
 CreateThread(function()
     Wait(1000)
@@ -51,6 +59,30 @@ local function reqModel(modelHash)
         timeout = timeout + 1
         Wait(50)
     end
+end
+
+---@param model number
+---@return boolean
+local function isValidObjectModel(model)
+    if not model or not IsModelValid(model) then return false end
+
+    reqModel(model)
+    if not HasModelLoaded(model) then return false end
+
+    if IsModelAPed(model) or IsModelAVehicle(model) then
+        SetModelAsNoLongerNeeded(model)
+        return false
+    end
+
+    local min, max = GetModelDimensions(model)
+    local size = max - min
+
+    if math.max(size.x, size.y, size.z) > maxAttachModelSize then
+        SetModelAsNoLongerNeeded(model)
+        return false
+    end
+
+    return true
 end
 
 ---@param dict string
@@ -193,9 +225,11 @@ local function createObj(objectId)
         SetWeaponObjectTintIndex(data.handle, weaponData.tint)
         AttachEntityToEntity(data.handle, data.ped, GetPedBoneIndex(data.ped, objData[4]), objData[2].x, objData[2].y, objData[2].z, objData[3].x, objData[3].y, objData[3].z, true, true, false, true, 1, true)
     else
-        reqModel(objData[1])
+        if not isValidObjectModel(objData[1]) then return false end
+
         data.handle = CreateObjectNoOffset(objData[1], coords.x, coords.y, coords.z + 5.0, false, false, false)
         SetEntityAsMissionEntity(data.handle, true, true)
+        SetModelAsNoLongerNeeded(objData[1])
         if objData[5] then SetEntityCollision(data.handle, false, false) end
         if objData[6] then SetEntityCompletelyDisableCollision(data.handle, true, true) end
 
@@ -283,7 +317,14 @@ AddStateBagChangeHandler("AttachObjects", nil, function(bagName, key, value, res
             end
         end
 
+        local count = 0
         for objectId, data in pairs(value) do
+            count = count + 1
+            if count > maxAttachObjects then
+                lib.print.error(("%s object limit (%d) reached, rejecting rest"):format(bagName, maxAttachObjects))
+                break
+            end
+
             if not playerToObjects[src][objectId] then
                 objects[objectId] = {
                     src = src,
