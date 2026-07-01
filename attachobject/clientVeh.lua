@@ -2,6 +2,9 @@ local vehiclesToObjects = {} --[[@as table<number, table<number, table>>]]
 local entities = {}
 local scopedVehicles = {}
 
+local maxAttachModelSize = tonumber(GetConvar('prp:attachObjectMaxSize', '5.0')) or 5.0
+local maxAttachObjects = GetConvarInt('prp:attachObjectLimit', 16)
+
 ---@param model number
 local function requestModel(model)
     local timeout = 0
@@ -13,7 +16,33 @@ local function requestModel(model)
     end
 end
 
+---@param model number
+---@return boolean
+local function isValidObjectModel(model)
+    if not model or not IsModelValid(model) then return false end
+
+    requestModel(model)
+    if not HasModelLoaded(model) then return false end
+
+    if IsModelAPed(model) or IsModelAVehicle(model) then
+        SetModelAsNoLongerNeeded(model)
+        return false
+    end
+
+    local min, max = GetModelDimensions(model)
+    local size = max - min
+
+    if math.max(size.x, size.y, size.z) > maxAttachModelSize then
+        SetModelAsNoLongerNeeded(model)
+        return false
+    end
+
+    return true
+end
+
 local function createObject(netId, data)
+    if not isValidObjectModel(data[2]) then return end
+
     local entity = NetworkGetEntityFromNetworkId(netId)
     local timeout = 0
     while not NetworkDoesNetworkIdExist(netId) and timeout < 10 do
@@ -23,9 +52,9 @@ local function createObject(netId, data)
     end
 
     local coords = GetEntityCoords(entity)
-    requestModel(data[2])
     local obj = CreateObject(data[2], coords.x, coords.y, coords.z - 1.0, false, true, false)
     SetEntityAsMissionEntity(obj, true, true)
+    SetModelAsNoLongerNeeded(data[2])
     SetEntityCollision(obj, data[7][1], data[7][2])
     if data[7][3] or data[7][4] then
         SetEntityCompletelyDisableCollision(obj, data[7][3], data[7][4])
@@ -102,10 +131,20 @@ AddStateBagChangeHandler("VehTempAttachObjects", nil, function(bagName, key, val
 
     pcall(function()
         if value then
+            local count = 0
             for objectId, data in pairs(value) do
+                count = count + 1
+                if count > maxAttachObjects then
+                    lib.print.error(("%s object limit (%d) reached, rejecting rest"):format(bagName, maxAttachObjects))
+                    break
+                end
+
                 if not vehiclesToObjects[netId][objectId] then
-                    data.entity = createObject(netId, data)
-                    vehiclesToObjects[netId][objectId] = data
+                    local obj = createObject(netId, data)
+                    if obj then
+                        data.entity = obj
+                        vehiclesToObjects[netId][objectId] = data
+                    end
                 else
                     reattachObject(netId, objectId, data)
                 end
