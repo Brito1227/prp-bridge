@@ -252,15 +252,19 @@ end
 
 ---@type table<string, fun(src: number, item: { name: string, label: string, metaData: table?, slot: number, count: number })>
 local itemsRegistry = {}
-RegisterNetEvent("ox_inventory:usedItemInternal", function(slot)
-    local src = source
+---@type table<string, string>
+local itemUseHooks = {}
 
-    local item = bridge.inv.getSlot(src, slot)
-    if not item then return lib.print.debug("Item not found in slot:", slot) end
+local function dispatchRegisteredItemUse(success, payload)
+    if not success or type(payload) ~= "table" or type(payload.item) ~= "table" then
+        return
+    end
 
-    lib.print.debug(('prp-bridge: Player %d used item %s from slot %d'):format(src, json.encode(item, { indent = true }), slot))
+    local item = payload.item
     local handler = itemsRegistry[item.name]
     if not handler then return lib.print.debug("No handler found for item:", item.name) end
+
+    lib.print.debug(('prp-bridge: Player %d used item %s from slot %d'):format(payload.source, json.encode(item, { indent = true }), item.slot))
 
     local data = {
         name = item.name,
@@ -270,17 +274,30 @@ RegisterNetEvent("ox_inventory:usedItemInternal", function(slot)
         count = item.count,
     }
 
-    local s, e = pcall(handler, src, data)
+    local s, e = pcall(handler, payload.source, data)
     if not s then
         lib.print.debug(("prp-bridge: Error in item usage handler for item '%s': %s"):format(item.name, e))
     end
-end)
+end
 
 ---@param itemName string
 ---@param cb fun(src: number, item: { name: string, label: string, metaData: table?, slot: number, count: number })
 function fw.registerItemUse(itemName, cb)
     lib.print.debug('Registering item use for item:', itemName)
     itemsRegistry[itemName] = cb
+
+    if itemUseHooks[itemName] then
+        return
+    end
+
+    local hookId = exports.ox_inventory:registerHook("usingItem", nil, {
+        itemFilter = {
+            [itemName] = true,
+        }
+    })
+
+    itemUseHooks[itemName] = hookId
+    AddEventHandler(hookId, dispatchRegisteredItemUse)
 end
 
 ---@param plate string
