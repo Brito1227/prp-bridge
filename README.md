@@ -30,7 +30,7 @@ BridgeConfig = {
     Inventory   = "ox_inventory",    -- ox_inventory | origen_inventory | tgiann_inventory
     Phone       = "lb-phone",        -- lb-phone | yseries | yphone | yflip | npwd | roadphone | 17mov_phone | gksphone
     Target      = "ox_target",       -- ox_target | qb-target | sleepless_interact
-    Medical     = "qbx_medical",     -- qbx_medical | esx_ambulancejob | nd_ambulance
+    Medical     = "qbx_medical",     -- qbx_medical | esx_ambulancejob | nd_ambulance | ak47_qb_ambulancejob
     Dispatch    = "ps-dispatch",     -- ps-dispatch | origen_police | cd_dispatch | rcore_dispatch
     VehicleKeys = "qbx_vehiclekeys", -- qbx_vehiclekeys | cd_garage | mVehicle | okokGarage | wasabi_carlock | mrnewbvehiclekeys | Renewed-Vehiclekeys | ...
     VehicleFuel = "ox_fuel",         -- ox_fuel | LegacyFuel | cdn-fuel | lc_fuel | qb-fuel | Renewed-Fuel
@@ -79,7 +79,7 @@ modules/
 ├── inv/         # inventories (ox_inventory, origen_inventory, tgiann_inventory)
 ├── target/      # targeting   (ox_target, qb-target, sleepless_interact)
 ├── dispatch/    # dispatch    (ps-dispatch, origen_police, cd_dispatch, rcore_dispatch)
-├── medical/     # medical     (qbx_medical, esx_ambulancejob, nd_ambulance)
+├── medical/     # medical     (qbx_medical, esx_ambulancejob, nd_ambulance, ak47_qb_ambulancejob)
 ├── phone/       # phones      (lb-phone, yseries, yphone, npwd, ...)
 ├── vkeys/       # vehicle keys
 ├── vfuel/       # vehicle fuel
