@@ -27,4 +27,4 @@
 ---@field type VehicleTypes
 ---@field inBoosting boolean
 
----@alias AvailableVehicleFuel 'ox_fuel' | 'LegacyFuel' | 'cdn-fuel' | 'lc_fuel' | 'qb-fuel' | 'Renewed-Fuel'
+---@alias AvailableVehicleFuel 'ox_fuel' | 'LegacyFuel' | 'cdn-fuel' | 'lc_fuel' | 'qb-fuel' | 'Renewed-Fuel' | 'rcore_fuel'
