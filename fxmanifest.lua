@@ -4,7 +4,7 @@ lua54 "yes"
 
 author "Prodigy Studios"
 description "prp-bridge - A framework bridge for Prodigy Studios resources"
-version "1.0.2"
+version "1.1.0"
 
 ui_page "ui/index.html"
 

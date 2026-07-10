@@ -14,6 +14,8 @@
 
 ---@alias AvailableMinigames 'prp-minigames'
 
+---@alias AvailableAppearances 'illenium-appearance' | 'fivem-appearance' | 'qb-clothing' | 'esx_skin'
+
 ---@alias AvailableVehicleKeys 'cd_garage' | 'mVehicle' | 'okokGarage' | 'qb-vehiclekeys' | 'qbx_vehiclekeys' | 'vehicles_keys' | 'wasabi_carlock' | 'nd_core' | 'mrnewbvehiclekeys' | 'Renewed-Vehiclekeys'
 
 ---@alias VehicleClasses 'X' | 'S' | 'A' | 'B' | 'C' | 'D' | 'E' | 'EV1' | 'EV2'

@@ -115,6 +115,16 @@ BridgeConfig.VehicleFuel = "ox_fuel"
 ---@type AvailableMinigames
 BridgeConfig.Minigames = "prp-minigames"
 
+--[[
+    Available Appearance systems:
+        - illenium-appearance
+        - fivem-appearance
+        - qb-clothing
+        - esx_skin
+]]
+---@type AvailableAppearances
+BridgeConfig.Appearance = "illenium-appearance"
+
 ---@type { CommandEnabled: boolean, CommandName: string }
 BridgeConfig.Group = {
     CommandEnabled = true,
