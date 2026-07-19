@@ -380,9 +380,7 @@ local itemsRegistry = {}
 local itemUseHooks = {}
 
 local function dispatchRegisteredItemUse(success, payload)
-    if not success or type(payload) ~= "table" or type(payload.item) ~= "table" then
-        return
-    end
+    if not success then return end
 
     local item = payload.item
     local handler = itemsRegistry[item.name]
