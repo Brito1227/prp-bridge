@@ -116,6 +116,16 @@ BridgeConfig.VehicleFuel = "ox_fuel"
 BridgeConfig.Minigames = "prp-minigames"
 
 --[[
+    Available Appearance systems:
+        - illenium-appearance
+        - fivem-appearance
+        - qb-clothing
+        - esx_skin
+]]
+---@type AvailableAppearances
+BridgeConfig.Appearance = "illenium-appearance"
+
+--[[
     Available Voice systems:
         - pma-voice
 ]]

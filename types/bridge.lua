@@ -424,6 +424,22 @@ bridge.medical = {}
 ---@return boolean
 function bridge.medical.isPlayerDead(serverId) end
 
+bridge.appearance = {}
+
+---**`client`**
+---@param ped number
+---@param data table|string
+function bridge.appearance.setPedAppearance(ped, data) end
+
+---**`client`**
+---@param ped? number
+---@return table?
+function bridge.appearance.getPedAppearance(ped) end
+
+---**`client`**
+---@param isNew? boolean
+function bridge.appearance.openCreator(isNew) end
+
 bridge.minigames = {}
 
 ---@param gameName string

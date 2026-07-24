@@ -14,6 +14,8 @@
 
 ---@alias AvailableMinigames 'prp-minigames'
 
+---@alias AvailableAppearances 'illenium-appearance' | 'fivem-appearance' | 'qb-clothing' | 'esx_skin'
+
 ---@alias AvailableVoice 'pma-voice'
 
 ---@class VoiceHudData

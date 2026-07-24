@@ -38,6 +38,7 @@ local moduleToDependency = {
     minigames = BridgeConfig.Minigames,
     vkeys = BridgeConfig.VehicleKeys,
     vfuel = BridgeConfig.VehicleFuel,
+    appearance = BridgeConfig.Appearance,
     voice = BridgeConfig.Voice,
 }
 
