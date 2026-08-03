@@ -28,10 +28,10 @@ BridgeConfig = {
 
     -- External systems
     Inventory   = "ox_inventory",    -- ox_inventory | origen_inventory | tgiann_inventory
-    Phone       = "lb-phone",        -- lb-phone | yseries | yphone | yflip | npwd | roadphone | 17mov_phone | gksphone
+    Phone       = "lb-phone",        -- lb-phone | yseries | yphone | yflip | npwd | roadphone | 17mov_phone | gksphone qs-smartphone-pro
     Target      = "ox_target",       -- ox_target | qb-target | sleepless_interact
     Medical     = "qbx_medical",     -- qbx_medical | esx_ambulancejob | nd_ambulance
-    Dispatch    = "ps-dispatch",     -- ps-dispatch | origen_police | cd_dispatch | rcore_dispatch
+    Dispatch    = "ps-dispatch",     -- ps-dispatch | origen_police | cd_dispatch | rcore_dispatch | qs-dispatch
     VehicleKeys = "qbx_vehiclekeys", -- qbx_vehiclekeys | cd_garage | mVehicle | okokGarage | wasabi_carlock | mrnewbvehiclekeys | Renewed-Vehiclekeys | ...
     VehicleFuel = "ox_fuel",         -- ox_fuel | LegacyFuel | cdn-fuel | lc_fuel | qb-fuel | Renewed-Fuel
     Minigames   = "prp-minigames",
@@ -78,7 +78,7 @@ modules/
 ├── fw/          # frameworks  (qbx_core, ox_core, qb-core, es_extended, nd_core)
 ├── inv/         # inventories (ox_inventory, origen_inventory, tgiann_inventory)
 ├── target/      # targeting   (ox_target, qb-target, sleepless_interact)
-├── dispatch/    # dispatch    (ps-dispatch, origen_police, cd_dispatch, rcore_dispatch)
+├── dispatch/    # dispatch    (ps-dispatch, origen_police, cd_dispatch, rcore_dispatch, qs-dispatch)
 ├── medical/     # medical     (qbx_medical, esx_ambulancejob, nd_ambulance)
 ├── phone/       # phones      (lb-phone, yseries, yphone, npwd, ...)
 ├── vkeys/       # vehicle keys
