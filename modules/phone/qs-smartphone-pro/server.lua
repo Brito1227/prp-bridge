@@ -4,7 +4,7 @@ local phone = {}
 ---@param from number
 ---@param message string
 function phone.sendMessage(src, from, message)
-    -- Source: https://www.quasar-store.com/docs/smartphone
+      -- Source: https://www.quasar-store.com/docs ( no documentation for smartphone pro )
     local ok = exports["qs-smartphone-pro"]:sendNewMail(src, {
         sender = tostring(from),
         subject = "Message",
@@ -20,7 +20,7 @@ end
 function phone.sendCoords(src, from, coords)
     -- No dedicated "share location + waypoint button" export confirmed for qs-smartphone-pro,
     -- so we send the coordinates as a readable mail instead (safe fallback).
-    -- Source: https://www.quasar-store.com/docs/smartphone 
+    -- Source: https://www.quasar-store.com/docs ( no documentation for smartphone pro )
     local ok = exports["qs-smartphone-pro"]:sendNewMail(src, {
         sender = tostring(from),
         subject = "Location",
@@ -34,7 +34,8 @@ end
 ---@param title string
 ---@param content? string
 function phone.sendNotification(src, title, content)
-    -- Source: https://www.quasar-store.com/docs/smartphone 
+    -- Source: https://www.quasar-store.com/docs ( no documentation for smartphone pro )
+    -- Confirmed working on our qs-smartphone-pro install (tested)
     local identifier = GetPlayerIdentifier(src, 0)
     local phoneNumber = exports["qs-smartphone-pro"]:GetPhoneNumberFromIdentifier(identifier, false)
 
