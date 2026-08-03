@@ -17,7 +17,7 @@ BridgeConfig.Debug = true
         - nd_core
 ]]
 ---@type AvailableFrameworks
-BridgeConfig.FrameWork = "es_extended"
+BridgeConfig.FrameWork = "qbx_core"
 
 --[[
     Available inventories
@@ -42,7 +42,7 @@ BridgeConfig.Inventory = "ox_inventory"
         - qs-smartphone-pro
 ]]
 ---@type AvailablePhones
-BridgeConfig.Phone = "qs-smartphone-pro"
+BridgeConfig.Phone = "lb-phone"
 
 --[[
     Available targets
@@ -83,7 +83,7 @@ BridgeConfig.Medical = 'qbx_medical'
         - qs-dispatch
 ]]
 ---@type AvailableDispatches
-BridgeConfig.Dispatch = "qs-dispatch"
+BridgeConfig.Dispatch = "ps-dispatch"
 
 --[[
     AvailableVehicleKeys Resources:
