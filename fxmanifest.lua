@@ -4,7 +4,7 @@ lua54 "yes"
 
 author "Prodigy Studios"
 description "prp-bridge - A framework bridge for Prodigy Studios resources"
-version "1.0.4"
+version "1.1.0"
 
 ui_page "ui/index.html"
 
@@ -54,6 +54,7 @@ escrow_ignore {
 
 files {
     "modules/**/client.lua",
+    "modules/fw/shared/*.lua",
     "locales/*.json",
     "ui/**/*",
     "sounds/*.ogg",
