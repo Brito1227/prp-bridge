@@ -312,6 +312,27 @@ function bridge.fw.inputDialog(heading, rows, options) end
 ---@return boolean
 function bridge.fw.isOnDuty() end
 
+---@return number
+function bridge.fw.getStress() end
+
+---@return number
+function bridge.fw.getHunger() end
+
+---@return number
+function bridge.fw.getThirst() end
+
+---@return number
+function bridge.fw.getHealth() end
+
+---@return number
+function bridge.fw.getMaxHealth() end
+
+---@return number
+function bridge.fw.getArmor() end
+
+---@return number
+function bridge.fw.getMaxArmor() end
+
 ---@param src number | string
 ---@param job string
 ---@param grade number? do they require a minimum grade
@@ -402,6 +423,22 @@ bridge.medical = {}
 ---@param serverId number
 ---@return boolean
 function bridge.medical.isPlayerDead(serverId) end
+
+bridge.appearance = {}
+
+---**`client`**
+---@param ped number
+---@param data table|string
+function bridge.appearance.setPedAppearance(ped, data) end
+
+---**`client`**
+---@param ped? number
+---@return table?
+function bridge.appearance.getPedAppearance(ped) end
+
+---**`client`**
+---@param isNew? boolean
+function bridge.appearance.openCreator(isNew) end
 
 bridge.minigames = {}
 
@@ -524,9 +561,21 @@ bridge.vkeys.remove = function(vehicle, plate) end
 
 bridge.vfuel = {}
 
+---@param vehicle number Vehicle entity
+---@return number 0-100
+function bridge.vfuel.get(vehicle) end
+
 ---**`server`**
 ---@param src number | string
 ---@param vehicle number Vehicle entity
 ---@param amount number Fuel amount to set
 ---@return boolean
 function bridge.vfuel.set(src, vehicle, amount) end
+
+bridge.voice = {}
+
+---@return AvailableVoice
+bridge.voice.getProvider = function() end
+
+---@return VoiceHudData
+bridge.voice.getHudData = function() end
