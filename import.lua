@@ -28,6 +28,12 @@ local context = IsDuplicityVersion() and "server" or "client"
 
 local function noop() end
 
+local disabledModule = setmetatable({}, {
+    __index = function()
+        return noop
+    end,
+})
+
 local moduleToDependency = {
     fw = BridgeConfig.FrameWork,
     inv = BridgeConfig.Inventory,
@@ -45,6 +51,12 @@ local moduleToDependency = {
 local function loadModule(self, module)
     local dir = ("modules/%s"):format(module)
     local targetDependency = moduleToDependency[module]
+
+    if targetDependency == false then
+        lib.print.debug("Skipping disabled module", module)
+        self[module] = disabledModule
+        return self[module]
+    end
 
     local chunk, shared = nil, nil
 
