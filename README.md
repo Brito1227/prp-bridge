@@ -26,15 +26,15 @@ BridgeConfig = {
     -- Framework selection
     FrameWork  = "qbx_core",         -- qbx_core | ox_core | qb-core | es_extended | nd_core
 
-    -- External systems
-    Inventory   = "ox_inventory",    -- ox_inventory | origen_inventory | tgiann_inventory
-    Phone       = "lb-phone",        -- lb-phone | yseries | yphone | yflip | npwd | roadphone | 17mov_phone | gksphone
-    Target      = "ox_target",       -- ox_target | qb-target | sleepless_interact
-    Medical     = "qbx_medical",     -- qbx_medical | esx_ambulancejob | nd_ambulance
-    Dispatch    = "ps-dispatch",     -- ps-dispatch | origen_police | cd_dispatch | rcore_dispatch
-    VehicleKeys = "qbx_vehiclekeys", -- qbx_vehiclekeys | cd_garage | mVehicle | okokGarage | wasabi_carlock | mrnewbvehiclekeys | Renewed-Vehiclekeys | ...
-    VehicleFuel = "ox_fuel",         -- ox_fuel | LegacyFuel | cdn-fuel | lc_fuel | qb-fuel | Renewed-Fuel | rcore_fuel
-    Minigames   = "prp-minigames",
+    -- External systems (set any to false to disable that category)
+    Inventory   = "ox_inventory",    -- ox_inventory | origen_inventory | tgiann_inventory | false
+    Phone       = "lb-phone",        -- lb-phone | yseries | yphone | yflip | npwd | roadphone | 17mov_phone | gksphone | false
+    Target      = "ox_target",       -- ox_target | qb-target | sleepless_interact | false
+    Medical     = "qbx_medical",     -- qbx_medical | esx_ambulancejob | nd_ambulance | false
+    Dispatch    = "ps-dispatch",     -- ps-dispatch | origen_police | cd_dispatch | rcore_dispatch | false
+    VehicleKeys = "qbx_vehiclekeys", -- qbx_vehiclekeys | cd_garage | mVehicle | okokGarage | wasabi_carlock | mrnewbvehiclekeys | Renewed-Vehiclekeys | false | ...
+    VehicleFuel = "ox_fuel",         -- ox_fuel | LegacyFuel | cdn-fuel | lc_fuel | qb-fuel | Renewed-Fuel | false
+    Minigames   = "prp-minigames",   -- prp-minigames | false
 
     -- Group command
     Group = {
