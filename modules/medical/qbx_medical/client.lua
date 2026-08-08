@@ -20,7 +20,6 @@ if bridge.name == bridge.currentResource then
 
     RegisterNetEvent("qbx_core:client:onSetMetaData", function(key, _, value)
         if key ~= "isdead" and key ~= "inlaststand" then return end
-
         deathState[key] = value == true or value == "true"
 
         local isDead = deathState.isdead or deathState.inlaststand
