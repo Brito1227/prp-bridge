@@ -26,6 +26,8 @@ local moduleToDependency = {
 
 For each registered category, `import.lua` loads the matching file from `modules/[category]/[resource-name]/[context].lua`. All categories listed in `moduleToDependency` are pre-loaded at startup; any other module is loaded lazily on first access via `bridge.<moduleName>`.
 
+Set a category to `false` in `BridgeConfig` (e.g. `BridgeConfig.Phone = false`) to skip loading that module. A no-op stub is exposed on `bridge` so resources that do not need the category can still start.
+
 - **Adding a new implementation to an existing category** (e.g. a new framework under `fw`): no changes to `import.lua` are needed - just update `BridgeConfig` to point to the new folder.
 - **Adding a completely new category**: you must also register it in `moduleToDependency` and add the corresponding key to `BridgeConfig`.
 
