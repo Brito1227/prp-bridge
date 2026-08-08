@@ -9,6 +9,9 @@ BridgeConfig.VersionCheck = true
 BridgeConfig.Debug = true
 
 --[[
+    Set any category below to false to disable it.
+    Example: BridgeConfig.Phone = false
+
     Available Frameworks:
         - qbx_core
         - ox_core
