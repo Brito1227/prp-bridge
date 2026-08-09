@@ -111,6 +111,7 @@ BridgeConfig.VehicleKeys = "qbx_vehiclekeys"
         - lc_fuel
         - qb-fuel
         - Renewed-Fuel
+        - rcore_fuel
 ]]
 ---@type AvailableVehicleFuel
 BridgeConfig.VehicleFuel = "ox_fuel"
