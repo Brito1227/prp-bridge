@@ -4,13 +4,13 @@
 
 ---@alias AvailableInventories 'ox_inventory' | 'origen_inventory' | 'tgiann-inventory' | false
 
----@alias AvailablePhones 'lb-phone' | 'yseries' | 'yphone' | 'yflip' | 'npwd' | 'roadphone' | '17mov_phone' | 'gksphone' | 'meteo-phone' | false
+---@alias AvailablePhones 'lb-phone' | 'yseries' | 'yphone' | 'yflip' | 'npwd' | 'roadphone' | '17mov_phone' | 'gksphone' | 'meteo-phone' | 'qs-smartphone-pro' | false
 
 ---@alias AvailableTargets 'ox_target' | 'qb-target' | 'sleepless_interact' | false
 
 ---@alias AvailableMedicals 'qbx_medical' | 'esx_ambulancejob' | 'wasabi_ambulance' | 'ars_ambulancejob' | 'osp_ambulance' | 'p-ambulancejob' | 'nd_ambulance' | 'qb-ambulancejob' | 'randol_medical' | 'tk_ambulancejob' | false
 
----@alias AvailableDispatches 'ps-dispatch' | 'origen_police' | 'cd_dispatch' | 'rcore_dispatch' | 'tk_dispatch' | 'lb-tablet' | 'aty_dispatch' | 'codem-dispatch' | 'core_dispatch' | false
+---@alias AvailableDispatches 'ps-dispatch' | 'origen_police' | 'cd_dispatch' | 'rcore_dispatch' | 'tk_dispatch' | 'lb-tablet' | 'aty_dispatch' | 'codem-dispatch' | 'core_dispatch' | 'qs-dispatch' | false
 
 ---@alias AvailableMinigames 'prp-minigames' | false
 

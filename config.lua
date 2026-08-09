@@ -42,6 +42,7 @@ BridgeConfig.Inventory = "ox_inventory"
         - 17mov_phone
         - gksphone
         - meteo-phone
+        - qs-smartphone-pro
 ]]
 ---@type AvailablePhones
 BridgeConfig.Phone = "lb-phone"
@@ -82,6 +83,7 @@ BridgeConfig.Medical = 'qbx_medical'
         - codem-dispatch
         - core_dispatch
         - kartik-mdt
+        - qs-dispatch
 ]]
 ---@type AvailableDispatches
 BridgeConfig.Dispatch = "ps-dispatch"

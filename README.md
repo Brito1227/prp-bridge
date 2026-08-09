@@ -28,10 +28,10 @@ BridgeConfig = {
 
     -- External systems (set any to false to disable that category)
     Inventory   = "ox_inventory",    -- ox_inventory | origen_inventory | tgiann_inventory | false
-    Phone       = "lb-phone",        -- lb-phone | yseries | yphone | yflip | npwd | roadphone | 17mov_phone | gksphone | false
+    Phone       = "lb-phone",        -- lb-phone | yseries | yphone | yflip | npwd | roadphone | 17mov_phone | gksphone | qs-smartphone-pro | false
     Target      = "ox_target",       -- ox_target | qb-target | sleepless_interact | false
     Medical     = "qbx_medical",     -- qbx_medical | esx_ambulancejob | nd_ambulance | false
-    Dispatch    = "ps-dispatch",     -- ps-dispatch | origen_police | cd_dispatch | rcore_dispatch | false
+    Dispatch    = "ps-dispatch",     -- ps-dispatch | origen_police | cd_dispatch | rcore_dispatch | qs-dispatch | false
     VehicleKeys = "qbx_vehiclekeys", -- qbx_vehiclekeys | cd_garage | mVehicle | okokGarage | wasabi_carlock | mrnewbvehiclekeys | Renewed-Vehiclekeys | false | ...
     VehicleFuel = "ox_fuel",         -- ox_fuel | LegacyFuel | cdn-fuel | lc_fuel | qb-fuel | Renewed-Fuel | false
     Minigames   = "prp-minigames",   -- prp-minigames | false
@@ -78,7 +78,7 @@ modules/
 ├── fw/          # frameworks  (qbx_core, ox_core, qb-core, es_extended, nd_core)
 ├── inv/         # inventories (ox_inventory, origen_inventory, tgiann_inventory)
 ├── target/      # targeting   (ox_target, qb-target, sleepless_interact)
-├── dispatch/    # dispatch    (ps-dispatch, origen_police, cd_dispatch, rcore_dispatch)
+├── dispatch/    # dispatch    (ps-dispatch, origen_police, cd_dispatch, rcore_dispatch, qs-dispatch)
 ├── medical/     # medical     (qbx_medical, esx_ambulancejob, nd_ambulance)
 ├── phone/       # phones      (lb-phone, yseries, yphone, npwd, ...)
 ├── vkeys/       # vehicle keys
