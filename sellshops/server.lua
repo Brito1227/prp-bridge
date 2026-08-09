@@ -1,4 +1,22 @@
 local shops = {}
+local DEFAULT_SELL_SHOP_DISTANCE <const> = 5.0
+
+local function isPlayerNearShop(src, shop)
+    if not shop or not shop.coords then
+        return false
+    end
+
+    local ped = GetPlayerPed(src)
+    if not DoesEntityExist(ped) then
+        return false
+    end
+
+    local playerCoords = GetEntityCoords(ped)
+    local shopCoords = vector3(shop.coords.x, shop.coords.y, shop.coords.z)
+    local maxDistance = shop.distance or shop.maxDistance or DEFAULT_SELL_SHOP_DISTANCE
+
+    return #(playerCoords - shopCoords) <= maxDistance
+end
 
 bridge.inv.registerSwapItemsHook(function(payload)
     local src = payload.source
@@ -23,6 +41,10 @@ bridge.inv.registerSwapItemsHook(function(payload)
 
     local shop = shops[inventory]
     if not shop then
+        return false
+    end
+
+    if not isPlayerNearShop(src, shop) then
         return false
     end
 
@@ -80,6 +102,10 @@ local function openShop(src, id)
 
     if not shop then
         lib.print.error(("No shop found with id %s"):format(shopId))
+        return
+    end
+
+    if not isPlayerNearShop(src, shop) then
         return
     end
 
